@@ -5,3 +5,8 @@ declare module 'v-money' {
   export default money;
   export { VMoney };
 }
+
+declare module 'vue-the-mask' {
+  import VueTheMask from 'vue-the-mask';
+  export default VueTheMask;
+}
