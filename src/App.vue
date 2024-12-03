@@ -18,7 +18,10 @@ const resultData = ref<{
 } | null>(null);
 
 function handleSubmit() {
-  const startIPCA = ipcaData.value.find(({ date }) => date === formData.value.startDate);
+  const startIndex = ipcaData.value.findIndex(({ date }) => date === formData.value.startDate);
+  const previousIndex = startIndex > 0 ? startIndex - 1 : null;
+
+  const startIPCA = previousIndex !== null ? ipcaData.value[previousIndex] : ipcaData.value[startIndex];
   const endIPCA = ipcaData.value.find(({ date }) => date === formData.value.endDate);
 
   if (!startIPCA || !endIPCA) return
@@ -29,6 +32,12 @@ function handleSubmit() {
     correctionIndex,
     value: valueToCorrect.value * correctionIndex
   };
+
+  formData.value = {
+    startDate: null,
+    endDate: null,
+    value: '0,00'
+  };
 }
 
 onMounted(() => {
@@ -37,8 +46,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>
-    <div class="flex flex-col gap-6 bg-gray-50 p-10 border border-gray-200 max-w-screen-lg m-auto mt-[140px] rounded-md">
+  <main class="mx-auto space-y-10 max-w-screen-lg my-14">
+    <div class="flex flex-col gap-6 bg-gray-50 p-8 border border-gray-200 rounded-md">
       <header>
         <h1 class="text-2xl font-bold">Correção de Valor pela Inflação</h1>
         <p>Insira as datas e o valor para calcular a correção pela inflação histórica do Brasil</p>
@@ -82,17 +91,18 @@ onMounted(() => {
             />
           </div>
         </div>
-        <input
+        <button
           type="submit"
-          value="Calcular"
-          class="h-10 col-span-2 rounded-sm text-white bg-zinc-700 cursor-pointer"
-        />
+          class="h-10 col-span-2 rounded-sm text-white bg-zinc-700"
+        >
+          Calcular
+        </button>
       </form>
     </div>
   
     <div
       v-if="resultData"
-      class="flex flex-col gap-6 bg-gray-50 p-10 border border-gray-200 max-w-screen-lg m-auto mt-10 mb-[140px] rounded-md"
+      class="flex flex-col gap-6 bg-gray-50 p-10 border border-gray-200 rounded-md"
     >
       <header>
         <h1 class="text-2xl font-bold">Resultado da Correção</h1>
@@ -109,7 +119,7 @@ onMounted(() => {
           <p class="font-bold text-xl">{{ resultData?.correctionIndex.toFixed(4).toString().replace('.', ',') }}</p>
         </div>
         <div class="bg-white border border-gray-300 p-5 text-black text-center rounded-sm">
-          <p>índice de correção no período</p>
+          <p>Valor percentual correspondente</p>
           <p class="font-bold text-xl">{{ ((resultData.correctionIndex - 1) * 100).toFixed(2).toString().replace('.', ',') }}%</p>
         </div>
       </div>
