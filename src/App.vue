@@ -119,7 +119,7 @@ onMounted(() => {
           <p class="font-bold text-xl">{{ resultData?.correctionIndex.toFixed(4).toString().replace('.', ',') }}</p>
         </div>
         <div class="bg-white border border-gray-300 p-5 text-black text-center rounded-sm">
-          <p>Valor percentual correspondente</p>
+          <p>Valor percentual correspondente </p>
           <p class="font-bold text-xl">{{ ((resultData.correctionIndex - 1) * 100).toFixed(2).toString().replace('.', ',') }}%</p>
         </div>
       </div>
