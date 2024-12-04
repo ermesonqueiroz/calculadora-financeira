@@ -11,6 +11,6 @@ const routes = [
 ];
 
 export const router = createRouter({
-  history: createWebHistory('/calculadora-financeira'),
+  history: createWebHistory(),
   routes,
 });
