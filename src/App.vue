@@ -195,6 +195,7 @@ onMounted(() => {
         ser acessada no
         <a
           href="https://www3.bcb.gov.br/sgspub/localizarseries/localizarSeries.do?method=prepararTelaLocalizarSeries"
+          target="_blank"
         >
           Sistema Gerenciador de Séries Temporais do Banco Central
         </a>
