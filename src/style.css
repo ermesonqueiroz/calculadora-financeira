@@ -54,6 +54,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
+.link {
   @apply text-blue-600 underline;
 }
