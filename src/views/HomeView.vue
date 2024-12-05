@@ -36,7 +36,7 @@ const items = [
         </p>
       </div>
 
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <RouterLink
           v-for="item in items"
           :key="item.title"
