@@ -19,3 +19,32 @@ export const unFormatCurrency = (formattedValue = '') => {
 
   return Number(cleanValue);
 }
+
+export function unFormatNumber(value: string): number {
+  let unFormattedValue = value.replace(/\D/g, "");
+  return Number(unFormattedValue) / 100;
+}
+
+export function maskNumber(value: string) {
+  let formattedValue = value;
+  
+  if (!formattedValue) return;  
+
+  formattedValue = formattedValue.replace(/\D/g, "");
+  formattedValue = (Number(formattedValue) / 100).toFixed(2).toString();
+  formattedValue = formattedValue.replace(".", ",");
+
+  return formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+export function maskDate(value: string) {
+  let formattedValue = value;
+
+  formattedValue = formattedValue.replace(/\D/g, "");
+
+  if (formattedValue.length > 2) {
+    formattedValue = formattedValue.substring(0, 2) + "/" + formattedValue.substring(2);
+  }
+
+  return formattedValue.substring(0, 7);
+}

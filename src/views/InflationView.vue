@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { ibgeService, IPCA } from "../services/ibge";
-import { formatCurrency, unFormatCurrency } from "../utils/formatter";
+import { maskNumber, formatCurrency, unFormatNumber, maskDate } from "../utils/formatter";
 import { useHead } from "@unhead/vue";
 
 useHead({
@@ -15,7 +15,7 @@ const formData = ref({
   value: "0,00",
 });
 
-const valueToCorrect = computed(() => unFormatCurrency(formData.value.value));
+const valueToCorrect = computed(() => unFormatNumber(formData.value.value));
 
 const resultData = ref<{
   correctionIndex: number;
@@ -43,12 +43,6 @@ function handleSubmit() {
   resultData.value = {
     correctionIndex,
     value: valueToCorrect.value * correctionIndex,
-  };
-
-  formData.value = {
-    startDate: null,
-    endDate: null,
-    value: "0,00",
   };
 }
 
@@ -79,9 +73,9 @@ onMounted(() => {
             <input
               type="text"
               placeholder="MM/AAAA"
-              v-mask="'##/####'"
               class="h-10 px-3 rounded-sm border border-gray-300 placeholder:text-gray-400"
-              v-model="formData.startDate"
+              @input="formData.startDate = maskDate($event.target.value)"
+              :value="formData.startDate"
             />
           </div>
           <div class="flex flex-col gap-1">
@@ -89,9 +83,9 @@ onMounted(() => {
             <input
               type="text"
               placeholder="MM/AAAA"
-              v-mask="'##/####'"
               class="h-10 px-3 rounded-sm border border-gray-300 placeholder:text-gray-400"
-              v-model="formData.endDate"
+              @input="formData.endDate = maskDate($event.target.value)"
+              :value="formData.endDate"
             />
           </div>
           <div class="flex flex-col col-span-2 gap-1">
@@ -105,12 +99,8 @@ onMounted(() => {
                 type="text"
                 placeholder="0,00"
                 class="h-10 px-3 w-full placeholder:text-gray-400"
-                v-model.lazy="formData.value"
-                v-money="{
-                  decimal: ',',
-                  thousands: '.',
-                  precision: 2,
-                }"
+                @input="formData.value = maskNumber($event.target.value)"
+                :value="formData.value"
               />
             </div>
           </div>

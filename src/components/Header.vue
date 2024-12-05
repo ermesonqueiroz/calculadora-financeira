@@ -4,13 +4,6 @@
       <RouterLink to="/">
         <img width="160px" height="64px" src="/images/logo.webp" alt="Tools Invest" />
       </RouterLink>
-      <ul>
-        <li>
-          <RouterLink to="/" class="hover:bg-gray-200 py-2 px-4 rounded-sm transition-colors">
-            Calculadoras
-          </RouterLink>
-        </li>
-      </ul>
     </nav>
   </header>
 </template>

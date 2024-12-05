@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useHead } from "@unhead/vue";
+import { maskNumber, formatCurrency, unFormatNumber } from "../utils/formatter";
 import { ref } from "vue";
-import { formatCurrency, unFormatCurrency } from "../utils/formatter";
 
 useHead({
   title: "Fórmula de Graham - Tools Invest",
@@ -19,10 +19,10 @@ const result = ref<null | number>(null);
 function handleSubmit() {
   if (!formData.value.LPA || !formData.value.VPA) return;
 
-  const PL = unFormatCurrency(formData.value.PL);
-  const PVP = unFormatCurrency(formData.value.PVP);
-  const LPA = unFormatCurrency(formData.value.LPA);
-  const VPA = unFormatCurrency(formData.value.VPA);
+  const PL = unFormatNumber(formData.value.PL);
+  const PVP = unFormatNumber(formData.value.PVP);
+  const LPA = unFormatNumber(formData.value.LPA);
+  const VPA = unFormatNumber(formData.value.VPA);
 
   result.value = Math.sqrt(PL * PVP * LPA * VPA);
 }
@@ -46,12 +46,8 @@ function handleSubmit() {
               type="text"
               placeholder="15"
               class="h-10 px-3 rounded-sm border border-gray-300 placeholder:text-gray-400"
-              v-model.lazy="formData.PL"
-              v-money="{
-                thousands: '',
-                decimal: ',',
-                precision: 2,
-              }"
+              @input="formData.PL = maskNumber($event.target.value)"
+              :value="formData.PL"
             />
           </div>
           <div class="flex flex-col gap-1">
@@ -60,12 +56,8 @@ function handleSubmit() {
               type="text"
               placeholder="1,5"
               class="h-10 px-3 rounded-sm border border-gray-300 placeholder:text-gray-400"
-              v-model.lazy="formData.PVP"
-              v-money="{
-                thousands: '',
-                decimal: ',',
-                precision: 2,
-              }"
+              @input="formData.PVP = maskNumber($event.target.value)"
+              :value="formData.PVP"
             />
           </div>
           <div class="flex flex-col gap-1">
@@ -79,12 +71,8 @@ function handleSubmit() {
               <input
                 placeholder="0,00"
                 class="h-10 px-3 w-full placeholder:text-gray-400"
-                v-model.lazy="formData.LPA"
-                v-money="{
-                  decimal: ',',
-                  thousands: '.',
-                  precision: 2,
-                }"
+                @input="formData.LPA = maskNumber($event.target.value)"
+                :value="formData.LPA"
               />
             </div>
           </div>
@@ -100,12 +88,8 @@ function handleSubmit() {
                 type="text"
                 placeholder="0,00"
                 class="h-10 px-3 w-full placeholder:text-gray-400"
-                v-model.lazy="formData.VPA"
-                v-money="{
-                  decimal: ',',
-                  thousands: '.',
-                  precision: 2,
-                }"
+                @input="formData.VPA = maskNumber($event.target.value)"
+                :value="formData.VPA"
               />
             </div>
           </div>
@@ -168,20 +152,19 @@ function handleSubmit() {
       </math>
       <p class="text-lg leading-relaxed">
         Explicando cada termo
-
-        <ul class="list-disc list-inside text-lg leading-relaxed">
-          <li>V: Valor intrínseco da ação - o preço justo estimado.</li>
-          <li>
-            LPA (Lucro por Ação): representa o lucro líquido da empresa dividido pelo número total de ações.
-          </li>
-          <li>
-            VPA (Valor Patrimonial por Ação): corresponde ao patrimônio líquido da empresa dividido pelo número total de ações.
-          </li>
-          <li>
-            22.5: Um fator que Graham determinou como adequado, combinando um múltiplo máximo de 15 para o P/L (Preço/Lucro) e de 1.5 para o P/VP (Preço/Valor Patrimonial).
-          </li>
-        </ul>
       </p>
+      <ul class="list-disc list-inside text-lg leading-relaxed">
+        <li>V: Valor intrínseco da ação - o preço justo estimado.</li>
+        <li>
+          LPA (Lucro por Ação): representa o lucro líquido da empresa dividido pelo número total de ações.
+        </li>
+        <li>
+          VPA (Valor Patrimonial por Ação): corresponde ao patrimônio líquido da empresa dividido pelo número total de ações.
+        </li>
+        <li>
+          22.5: Um fator que Graham determinou como adequado, combinando um múltiplo máximo de 15 para o P/L (Preço/Lucro) e de 1.5 para o P/VP (Preço/Valor Patrimonial).
+        </li>
+      </ul>
     </section>
     <section class="space-y-4">
       <h2 class="text-3xl font-bold">Para que serve o Número de Graham?</h2>
@@ -196,16 +179,17 @@ function handleSubmit() {
       <h2 class="text-3xl font-bold">Exemplo Prático</h2>
       <p class="text-lg leading-relaxed">
         Imagine uma ação com os seguintes indicadores:
-
-        <ul class="list-disc list-inside text-lg leading-relaxed">
-          <li>
-            LPA (Lucro por Ação): R$ 5,00
-          </li>
-          <li>
-            VPA (Valor Patrimonial por Ação): R$ 20,00
-          </li>
-        </ul>
-        <br>
+      </p>
+      <ul class="list-disc list-inside text-lg leading-relaxed">
+        <li>
+          LPA (Lucro por Ação): R$ 5,00
+        </li>
+        <li>
+          VPA (Valor Patrimonial por Ação): R$ 20,00
+        </li>
+      </ul>
+      <br>
+      <p>
         Aplicando a fórmula:   
       </p>
       <math class="text-3xl py-5" display="block">
@@ -232,16 +216,15 @@ function handleSubmit() {
         O valor intrínseco calculado (V) é aproximadamente R$ 47,43.
   
         Agora, comparando com o preço atual de mercado:
-  
-        <ul class="list-disc list-inside">
-          <li>
-            Se o preço de mercado for R$ 40,00: A ação está subvalorizada, sugerindo uma possível oportunidade de compra.
-          </li>
-          <li>
-            Se o preço de mercado for R$ 50,00: A ação está supervalorizada, o que exige mais cautela.
-          </li>
-        </ul>
       </p>
+      <ul class="list-disc list-inside">
+        <li>
+          Se o preço de mercado for R$ 40,00: A ação está subvalorizada, sugerindo uma possível oportunidade de compra.
+        </li>
+        <li>
+          Se o preço de mercado for R$ 50,00: A ação está supervalorizada, o que exige mais cautela.
+        </li>
+      </ul>
     </section>
   </div>
 </template>
