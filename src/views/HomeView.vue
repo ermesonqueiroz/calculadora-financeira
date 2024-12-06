@@ -26,16 +26,15 @@ const items = [
 </script>
 
 <template>
-  <div class="mx-auto px-10 xl:px-0 space-y-16 max-w-screen-lg mt-4 mb-20">
-    <main class="space-y-6">
-      <div>
-        <h1 class="text-3xl font-bold">Calculadoras</h1>
-        <p>
-          Essas calculadoras têm o objetivo de otimizar seu tempo e otimizar o
-          seu processo de tomada de decisão.
-        </p>
-      </div>
-
+  <main class="mx-auto px-10 xl:px-0 space-y-6 max-w-screen-lg mt-4 mb-20">
+    <header>
+      <h1 class="text-3xl font-bold">Calculadoras</h1>
+      <p>
+        Essas calculadoras têm o objetivo de otimizar seu tempo e otimizar o
+        seu processo de tomada de decisão.
+      </p>
+    </header>
+    <div>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <RouterLink
           v-for="item in items"
@@ -52,6 +51,6 @@ const items = [
           </div>
         </RouterLink>
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
 </template>
