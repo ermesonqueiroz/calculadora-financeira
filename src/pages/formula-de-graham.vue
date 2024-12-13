@@ -3,6 +3,10 @@ import { useHead } from "@unhead/vue";
 import { maskNumber, formatCurrency, unFormatNumber } from "../utils/formatter";
 import { ref } from "vue";
 
+defineOptions({
+  name: 'GrahamPage',
+});
+
 useHead({
   title: "Fórmula de Graham - Tools Invest",
 });

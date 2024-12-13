@@ -3,6 +3,10 @@ import { PhBank, PhHandCoins } from "@phosphor-icons/vue";
 import { useHead } from "@unhead/vue";
 import { RouterLink } from "vue-router";
 
+defineOptions({
+  name: 'HomePage',
+});
+
 useHead({
   title: "Calculadoras - Tools Invest",
 });
@@ -21,7 +25,7 @@ const items = [
     description:
       "Calcule o valor intrínseco de uma ação usando a famosa fórmula de Benjamin Graham, para avaliar seu potencial de investimento.",
     link: "/formula-de-graham",
-  },
+  }
 ];
 </script>
 

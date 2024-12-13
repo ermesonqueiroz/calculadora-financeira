@@ -4,14 +4,28 @@ import { ibgeService, IPCA } from "../services/ibge";
 import { maskNumber, formatCurrency, unFormatNumber, maskDate } from "../utils/formatter";
 import { useHead } from "@unhead/vue";
 
+defineOptions({
+  name: 'InflationPage',
+});
+
 useHead({
-  title: 'Calculadora de Correção pela Inflação - Tools Invest'
+  title: 'Calculadora de Correção pela Inflação - Tools Invest',
+  meta: [
+    {
+      name: 'description',
+      content: 'A Calculadora de Correção Monetária atualiza valores com base na variação do IPCA entre um período de datas, de forma simples e precisa.'
+    },
+    {
+      name: 'keywords',
+      content: 'correção monetária online, atualização de valores, cálculo de inflação, índice de preços, correção pelo IPCA, atualização monetária automática, correção de valores atrasados, calcular inflação online, ajuste de valores pela inflação, índice de preços ao consumidor, inflação acumulada, cálculo de valores corrigidos, IPCA atualizado, ferramenta de correção monetária, reajuste monetário, inflação brasil, atualização de valores, banco central, ipca mensal, calculadora inflação'
+    }
+  ]
 })
 
 const ipcaData = ref<IPCA[]>([]);
 const formData = ref({
-  startDate: null,
-  endDate: null,
+  startDate: '',
+  endDate: '',
   value: "0,00",
 });
 
@@ -74,7 +88,7 @@ onMounted(() => {
               type="text"
               placeholder="MM/AAAA"
               class="h-10 px-3 rounded-sm border border-gray-300 placeholder:text-gray-400"
-              @input="formData.startDate = maskDate($event.target.value)"
+              @input="({ target }) => formData.startDate = maskDate((target as HTMLInputElement).value as string)"
               :value="formData.startDate"
             />
           </div>
@@ -84,7 +98,7 @@ onMounted(() => {
               type="text"
               placeholder="MM/AAAA"
               class="h-10 px-3 rounded-sm border border-gray-300 placeholder:text-gray-400"
-              @input="formData.endDate = maskDate($event.target.value)"
+              @input="({ target }) => formData.endDate = maskDate((target as HTMLInputElement).value as string)"
               :value="formData.endDate"
             />
           </div>
@@ -99,7 +113,7 @@ onMounted(() => {
                 type="text"
                 placeholder="0,00"
                 class="h-10 px-3 w-full placeholder:text-gray-400"
-                @input="formData.value = maskNumber($event.target.value)"
+                @input="({ target }) => formData.value = maskNumber((target as HTMLInputElement).value as string)"
                 :value="formData.value"
               />
             </div>

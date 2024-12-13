@@ -28,7 +28,7 @@ export function unFormatNumber(value: string): number {
 export function maskNumber(value: string) {
   let formattedValue = value;
   
-  if (!formattedValue) return;  
+  if (!formattedValue) return '';
 
   formattedValue = formattedValue.replace(/\D/g, "");
   formattedValue = (Number(formattedValue) / 100).toFixed(2).toString();
