@@ -9,6 +9,47 @@ defineOptions({
 
 useHead({
   title: "Calculadoras - Tools Invest",
+  meta: [
+    {
+      name: 'description',
+      content: 'Simule investimentos com juros compostos, corrija valores pela inflação e muito mais!'
+    },
+    {
+      name: 'keywords',
+      content: 'calculadora inflação, correção monetária, IPCA, atualização de valores, índice de preços, cálculo inflação, correção pela inflação, inflação Brasil, IPCA mensal, Banco Central, IBGE'
+    }
+  ],
+  script: [
+    {
+      hid: 'json-ld',
+      type: 'application/ld+json',
+      textContent: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Calculadoras Financeiras",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Calculadora de Juros Compostos",
+            "url": "https://toolsinvest.com.br/juros-compostos"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Correção de Valores pela Inflação",
+            "url": "https://toolsinvest.com.br/correcao-de-valor-pela-inflacao"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Fórmula de Graham",
+            "url": "https://toolsinvest.com.br/formula-de-graham"
+          }
+        ]
+      })
+    }
+  ]
 });
 
 const items = [
