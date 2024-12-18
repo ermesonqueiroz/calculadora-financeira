@@ -18,6 +18,37 @@ useHead({
       name: 'keywords',
       content: 'Fórmula de Graham, Calculadora da Fórmula de Graham, Cálculo do Valor Intrínseco, Investimento de Graham, Valor Intrínseco das Ações, Cálculo de Ações, Fórmula de Graham para Ações, Avaliação de Ações, Investimento em Ações, Cálculo de Preço Justo de Ações, Graham Formula Calculator, Preço Justo das Ações, Investimento Inteligente, Teoria de Graham, Cálculo de Preço de Ações com Graham, Graham Equation'
     }
+  ],
+  script: [
+    {
+      hid: 'json-ld',
+      type: 'application/ld+json',
+      textContent: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Calculadoras Financeiras",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Calculadora de Juros Compostos",
+            "url": "https://toolsinvest.com.br/juros-compostos"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Correção de Valores pela Inflação",
+            "url": "https://toolsinvest.com.br/correcao-de-valor-pela-inflacao"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Fórmula de Graham",
+            "url": "https://toolsinvest.com.br/formula-de-graham"
+          }
+        ]
+      })
+    }
   ]
 });
 
