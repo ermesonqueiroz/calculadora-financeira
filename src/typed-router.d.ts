@@ -21,5 +21,6 @@ declare module 'vue-router/auto-routes' {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/correcao-de-valor-pela-inflacao': RouteRecordInfo<'/correcao-de-valor-pela-inflacao', '/correcao-de-valor-pela-inflacao', Record<never, never>, Record<never, never>>,
     '/formula-de-graham': RouteRecordInfo<'/formula-de-graham', '/formula-de-graham', Record<never, never>, Record<never, never>>,
+    '/juros-compostos': RouteRecordInfo<'/juros-compostos', '/juros-compostos', Record<never, never>, Record<never, never>>,
   }
 }

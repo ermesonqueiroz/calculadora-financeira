@@ -177,51 +177,53 @@ onMounted(() => {
       </div>
     </main>
 
-    <section class="space-y-4">
-      <h2 class="text-3xl font-bold">O que é inflação?</h2>
-      <p class="text-lg leading-relaxed">
-        A inflação é o aumento geral e contínuo dos preços de bens e serviços em
-        uma economia ao longo do tempo. Ela reflete a perda do poder de compra
-        da moeda: com a inflação, a mesma quantia de dinheiro compra menos do
-        que anteriormente. No Brasil, o índice oficial que mede a inflação é o
-        <strong>IPCA (Índice Nacional de Preços ao Consumidor Amplo)</strong>,
-        calculado pelo <strong>IBGE</strong>.
-      </p>
-    </section>
-    <section class="space-y-4">
-      <h2 class="text-3xl font-bold">De onde vêm os dados da inflação?</h2>
-      <p class="text-lg leading-relaxed">
-        O IPCA é o índice oficial da inflação no Brasil, calculado e divulgado
-        mensalmente pelo
-        <strong>IBGE (Instituto Brasileiro de Geografia e Estatística)</strong>.
-        Ele mede as variações de preços de uma cesta de bens e serviços
-        consumidos pelas famílias brasileiras. O IPCA é utilizado pelo Banco
-        Central do Brasil para orientar a política monetária do país.
-        <br />
-        <br />
-        Nosso site utiliza a Série temporal 433 do Banco Central para calcular a
-        correção pela inflação de valores em períodos passados. Essa série pode
-        ser acessada no
-        <a
-          class="link"
-          href="https://www3.bcb.gov.br/sgspub/localizarseries/localizarSeries.do?method=prepararTelaLocalizarSeries"
-          target="_blank"
-        >
-          Sistema Gerenciador de Séries Temporais do Banco Central
-        </a>
-      </p>
-    </section>
-    <section class="space-y-4">
-      <h2 class="text-3xl font-bold">
-        Como é feito o cálculo da correção pela inflação?
-      </h2>
-      <p class="text-lg leading-relaxed">
-        O cálculo da correção de valores é realizado aplicando-se o índice
-        acumulado do IPCA. A cada mês, a variação percentual do IPCA é
-        convertida em um fator multiplicativo, que é aplicado ao valor inicial
-        para ajustá-lo à inflação. Isso significa que o valor é corrigido mês a
-        mês, de acordo com a inflação registrada durante esse período.
-      </p>
-    </section>
+    <article class="space-y-10">
+      <section class="space-y-4">
+        <h2 class="text-3xl font-bold">O que é inflação?</h2>
+        <p class="text-lg leading-relaxed">
+          A inflação é o aumento geral e contínuo dos preços de bens e serviços em
+          uma economia ao longo do tempo. Ela reflete a perda do poder de compra
+          da moeda: com a inflação, a mesma quantia de dinheiro compra menos do
+          que anteriormente. No Brasil, o índice oficial que mede a inflação é o
+          <strong>IPCA (Índice Nacional de Preços ao Consumidor Amplo)</strong>,
+          calculado pelo <strong>IBGE</strong>.
+        </p>
+      </section>
+      <section class="space-y-4">
+        <h2 class="text-3xl font-bold">De onde vêm os dados da inflação?</h2>
+        <p class="text-lg leading-relaxed">
+          O IPCA é o índice oficial da inflação no Brasil, calculado e divulgado
+          mensalmente pelo
+          <strong>IBGE (Instituto Brasileiro de Geografia e Estatística)</strong>.
+          Ele mede as variações de preços de uma cesta de bens e serviços
+          consumidos pelas famílias brasileiras. O IPCA é utilizado pelo Banco
+          Central do Brasil para orientar a política monetária do país.
+          <br />
+          <br />
+          Nosso site utiliza a Série temporal 433 do Banco Central para calcular a
+          correção pela inflação de valores em períodos passados. Essa série pode
+          ser acessada no
+          <a
+            class="link"
+            href="https://www3.bcb.gov.br/sgspub/localizarseries/localizarSeries.do?method=prepararTelaLocalizarSeries"
+            target="_blank"
+          >
+            Sistema Gerenciador de Séries Temporais do Banco Central
+          </a>
+        </p>
+      </section>
+      <section class="space-y-4">
+        <h2 class="text-3xl font-bold">
+          Como é feito o cálculo da correção pela inflação?
+        </h2>
+        <p class="text-lg leading-relaxed">
+          O cálculo da correção de valores é realizado aplicando-se o índice
+          acumulado do IPCA. A cada mês, a variação percentual do IPCA é
+          convertida em um fator multiplicativo, que é aplicado ao valor inicial
+          para ajustá-lo à inflação. Isso significa que o valor é corrigido mês a
+          mês, de acordo com a inflação registrada durante esse período.
+        </p>
+      </section>
+    </article>
   </div>
 </template>

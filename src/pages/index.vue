@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { PhBank, PhHandCoins } from "@phosphor-icons/vue";
+import { PhBank, PhChartLineUp, PhHandCoins } from "@phosphor-icons/vue";
 import { useHead } from "@unhead/vue";
 import { RouterLink } from "vue-router";
 
 defineOptions({
-  name: 'HomePage',
+  name: "HomePage",
 });
 
 useHead({
@@ -23,9 +23,16 @@ const items = [
     icon: PhHandCoins,
     title: "Fórmula de Graham",
     description:
-      "Calcule o valor intrínseco de uma ação usando a famosa fórmula de Benjamin Graham, para avaliar seu potencial de investimento.",
+      "Calcule o valor intrínseco de uma ação usando a famosa fórmula de Benjamin Graham.",
     link: "/formula-de-graham",
-  }
+  },
+  {
+    icon: PhChartLineUp,
+    title: "Juros Compostos",
+    description:
+      "Descubra quanto seu dinheiro pode crescer ao longo do tempo com Juros Compostos.",
+    link: "/juros-compostos",
+  },
 ];
 </script>
 
@@ -34,12 +41,12 @@ const items = [
     <header>
       <h1 class="text-3xl font-bold">Calculadoras</h1>
       <p>
-        Essas calculadoras têm o objetivo de otimizar seu tempo e otimizar o
-        seu processo de tomada de decisão.
+        Essas calculadoras têm o objetivo de otimizar seu tempo e otimizar o seu
+        processo de tomada de decisão.
       </p>
     </header>
     <div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 grid-rows- lg:grid-cols-2 gap-4">
         <RouterLink
           v-for="item in items"
           :key="item.title"
@@ -50,7 +57,7 @@ const items = [
             <component :is="item.icon" :size="40" />
           </div>
           <div>
-            <h2 class="text-xl font-bold leading-tight">{{ item.title }}</h2>
+            <h2 class="text-xl font-bold">{{ item.title }}</h2>
             <p class="text-sm">{{ item.description }}</p>
           </div>
         </RouterLink>
