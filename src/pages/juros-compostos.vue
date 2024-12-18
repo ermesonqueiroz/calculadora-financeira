@@ -1,6 +1,26 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { formatCurrency, maskNumber, unFormatNumber } from "../utils/formatter";
+import { useHead } from "@unhead/vue";
+
+defineOptions({
+  name: 'CompoundInterestPage',
+});
+
+useHead({
+  title: "Juros Compostos - Tools Invest",
+  meta: [
+    {
+      name: 'description',
+      content: 'Descubra quanto seu dinheiro pode crescer ao longo do tempo com Juros Compostos.'
+    },
+    {
+      name: 'keywords',
+      content: 'Juros Compostos, Calculadora de Juros Compostos, Cálculo de Juros Compostos, Juros Compostos Online, Investimentos com Juros Compostos, Fórmula de Juros Compostos, Taxa de Juros Compostos, Montante de Juros Compostos, Juros sobre Juros, Aportes Mensais Juros Compostos, Juros Compostos no Cálculo Financeiro, Como Calcular Juros Compostos, Juros Compostos Anuais e Mensais, Juros Compostos com Aportes Regulares'
+    }
+  ]
+});
+
 
 const formData = ref({
   startValue: "",

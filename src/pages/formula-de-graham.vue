@@ -9,6 +9,16 @@ defineOptions({
 
 useHead({
   title: "Fórmula de Graham - Tools Invest",
+  meta: [
+    {
+      name: 'description',
+      content: 'Calcule o valor intrínseco de uma ação usando a famosa fórmula de Benjamin Graham.'
+    },
+    {
+      name: 'keywords',
+      content: 'Fórmula de Graham, Calculadora da Fórmula de Graham, Cálculo do Valor Intrínseco, Investimento de Graham, Valor Intrínseco das Ações, Cálculo de Ações, Fórmula de Graham para Ações, Avaliação de Ações, Investimento em Ações, Cálculo de Preço Justo de Ações, Graham Formula Calculator, Preço Justo das Ações, Investimento Inteligente, Teoria de Graham, Cálculo de Preço de Ações com Graham, Graham Equation'
+    }
+  ]
 });
 
 const formData = ref({
